@@ -14,7 +14,7 @@ In this project, I build a web application to regconize over **130** kinds of fo
 
 ---
 
-The app can be accessed via [this link](https://share.streamlit.io/luongtruong77/data-engineering-customers-complaints-dashboard/main/app.py). 
+The app can be accessed via [this link](https://share.streamlit.io/luongtruong77/food_130_recognition/main/app.py). 
 
 
 ## Data
