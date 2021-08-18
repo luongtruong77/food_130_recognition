@@ -1,6 +1,30 @@
 import tensorflow as tf
-from utils import load_and_prep_image, make_confusion_matrix, pred_and_plot
 import streamlit as st
+
+
+def load_and_prep_image(filename, img_shape=224, scale=True):
+    """
+  Reads in an image from filename, turns it into a tensor and reshapes into
+  (224, 224, 3).
+
+  Parameters
+  ----------
+  filename (str): string filename of target image
+  img_shape (int): size to resize target image to, default 224
+  scale (bool): whether to scale pixel values to range(0, 1), default True
+  """
+    # Read in the image
+    img = tf.io.read_file(filename)
+    # Decode it into a tensor
+    img = tf.image.decode_jpeg(img)
+    # Resize the image
+    img = tf.image.resize(img, [img_shape, img_shape])
+    if scale:
+        # Rescale the image (get all values between 0 and 1)
+        return img / 255.
+    else:
+        return img
+
 
 class_names = ['apple_pie',
                'baby_back_ribs',
@@ -150,10 +174,11 @@ if uploaded_file is not None:
     with open('./image.jpg', 'wb') as f:
         f.write(bytes_data)
 
-# Make predictions on custom food images
+    # Make predictions on custom food images
 
     img = load_and_prep_image("image.jpg", scale=False)  # load in target image and turn it into tensor
-    pred_prob = loaded_model.predict(tf.expand_dims(img, axis=0))  # make prediction on image with shape [None, 224, 224, 3]
+    pred_prob = loaded_model.predict(
+        tf.expand_dims(img, axis=0))  # make prediction on image with shape [None, 224, 224, 3]
     pred_class = class_names[pred_prob.argmax()]  # find the predicted class label
     second_pred_prob = sorted(pred_prob[0])[-2]
     second_pred_index = list(pred_prob[0]).index(sorted(pred_prob[0])[-2])
