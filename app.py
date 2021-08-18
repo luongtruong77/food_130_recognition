@@ -1,8 +1,5 @@
 import tensorflow as tf
-import matplotlib.pyplot as plt
-import urllib.request
 from utils import load_and_prep_image, make_confusion_matrix, pred_and_plot
-from PIL import Image
 import streamlit as st
 
 class_names = ['apple_pie',
