@@ -22,9 +22,12 @@ The app can be accessed via [this link](https://share.streamlit.io/luongtruong77
 In this project, I will use 2 datasets to train my model:
 #### The Food-101 Data Set
 ![](https://data.vision.ee.ethz.ch/cvl/datasets_extra/food-101/static/img/food-101.jpg)
+
 This challenging data set has 101 food categories, with 101'000 images. For each class, 250 manually reviewed test images are provided as well as 750 training images. On purpose, the training images were not cleaned, and thus still contain some amount of noise. This comes mostly in the form of intense colors and sometimes wrong labels. All images were rescaled to have a maximum side length of 512 pixels.
 
 #### The 30VNFoods Data Set
+![](https://github.com/luongtruong77/food_130_recognition/blob/main/figures/banh_mi.jpg?raw=true)
+
 This dataset has 30 Vietnamese food categories, and collected by [Quan Dang](https://github.com/18520339). It has the most authentic Vietnamese food categories, and is good for this purpose of building this app.
 Since `pho` is in both datasets, the combined dataset has 130 categories (instead of 131).
 
@@ -67,4 +70,3 @@ Streamlit web app is built and deployed to Heroku.
 
 
 
-# food_130_recognition
