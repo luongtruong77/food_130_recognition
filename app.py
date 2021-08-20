@@ -179,10 +179,10 @@ if uploaded_file is not None:
     img = load_and_prep_image("image.jpg", scale=False)  # load in target image and turn it into tensor
     pred_prob = loaded_model.predict(
         tf.expand_dims(img, axis=0))  # make prediction on image with shape [None, 224, 224, 3]
-    pred_class = class_names[pred_prob.argmax()]  # find the predicted class label
+    pred_class = " ".join(class_names[pred_prob.argmax()].split("_"))  # find the predicted class label
     second_pred_prob = sorted(pred_prob[0])[-2]
     second_pred_index = list(pred_prob[0]).index(sorted(pred_prob[0])[-2])
-    second_pred_class_name = class_names[second_pred_index]
+    second_pred_class_name = " ".join(class_names[second_pred_index].split("_"))
 
     if pred_prob.max() <= 0.95:
         st.write(
