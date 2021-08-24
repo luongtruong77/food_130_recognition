@@ -2,15 +2,15 @@ import tensorflow as tf
 import streamlit as st
 
 
-def load_and_prep_image(filename, img_shape=224, scale=True):
+def load_and_prep_image(filename, img_shape=380, scale=True):
     """
   Reads in an image from filename, turns it into a tensor and reshapes into
-  (224, 224, 3).
+  (380, 380, 3).
 
   Parameters
   ----------
   filename (str): string filename of target image
-  img_shape (int): size to resize target image to, default 224
+  img_shape (int): size to resize target image to, default 380
   scale (bool): whether to scale pixel values to range(0, 1), default True
   """
     # Read in the image
@@ -164,7 +164,13 @@ st.write('This app is capable of recognizing 130 kinds of food with over 30 kind
          '(including **phở, gỏi cuốn, bánh bèo, bánh mì, hủ tiếu, bánh xèo**, etc). ')
 st.write('---')
 
-loaded_model = tf.keras.models.load_model("models/model.h5")
+st.cache(suppress_st_warning=True)
+def model_loading(link):
+    model = tf.keras.models.load_model(link)
+    return model
+
+
+loaded_model = model_loading(link="models/model.h5")
 
 uploaded_file = st.file_uploader("Choose a file")
 
