@@ -162,6 +162,8 @@ st.markdown("<h1 style='text-align: center; color: black;'>Food Recognition App!
 st.write('---')
 st.write('This app is capable of recognizing 130 kinds of food with over 30 kinds of Vietnamese foods '
          '(including **phở, gỏi cuốn, bánh bèo, bánh mì, hủ tiếu, bánh xèo**, etc). ')
+st.write('This app is created by [Steven Truong](https://www.linkedin.com/in/luongtruong77/).')
+st.write('The source codes can be found [here](https://github.com/luongtruong77/food_130_recognition)')
 st.write('---')
 
 st.cache(suppress_st_warning=True)
@@ -172,7 +174,7 @@ def model_loading(link):
 
 loaded_model = model_loading(link="models/model.h5")
 
-uploaded_file = st.file_uploader("Choose a file")
+uploaded_file = st.file_uploader("Choose a file or use the device's camera:")
 
 if uploaded_file is not None:
     bytes_data = uploaded_file.read()
