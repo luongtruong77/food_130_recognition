@@ -166,7 +166,8 @@ st.write('This app is created by [Steven Truong](https://www.linkedin.com/in/luo
 st.write('The source codes can be found [here](https://github.com/luongtruong77/food_130_recognition)')
 st.write('---')
 
-st.cache(suppress_st_warning=True)
+
+@st.cache(suppress_st_warning=True)
 def model_loading(link):
     model = tf.keras.models.load_model(link)
     return model
