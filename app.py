@@ -167,7 +167,7 @@ st.write('The source codes can be found [here](https://github.com/luongtruong77/
 st.write('---')
 
 
-@st.cache(suppress_st_warning=True)
+# @st.cache(hash_funcs={tf.keras.utils.object_identity.ObjectIdentityDictionary: my_hash_func})
 def model_loading(link):
     model = tf.keras.models.load_model(link)
     return model
